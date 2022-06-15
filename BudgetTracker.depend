@@ -25,3 +25,51 @@
 1655304371 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgetingapp.h
 	<iostream>
 
+1655304836 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\auxiliarymethods.cpp
+	"AuxiliaryMethods.h"
+
+1655304750 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\auxiliarymethods.h
+	<iostream>
+
+1655304836 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettracker.cpp
+	"BudgetTracker.h"
+
+1655304750 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettracker.h
+	<iostream>
+
+1655304835 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettrackerfile.cpp
+	"BudgetTrackerFile.h"
+
+1655304749 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettrackerfile.h
+	<iostream>
+
+1655304836 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\operation.cpp
+	"Operation.h"
+
+1655305849 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\operation.h
+	<iostream>
+
+1655304836 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\textfile.cpp
+	"TextFile.h"
+
+1655304750 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\textfile.h
+	<iostream>
+
+1655304835 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\usersfile.cpp
+	"UsersFile.h"
+
+1655304749 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\usersfile.h
+	<iostream>
+
+1655304835 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\usersmenager.cpp
+	"UsersMenager.h"
+
+1655304750 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\usersmenager.h
+	<iostream>
+
+1655305398 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\user.cpp
+	"User.h"
+
+1655305523 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\user.h
+	<iostream>
+
