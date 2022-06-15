@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1303067212 source:c:\users\hubert\desktop\kurs\przysz³yprogramista-obiektowo\budgettracker\markup.cpp
+	<stdio.h>
+	"Markup.h"
+	<errno.h>
+	<iconv.h>
+	<windows.h>
+	<mbstring.h>
+
+1303067212 c:\users\hubert\desktop\kurs\przysz³yprogramista-obiektowo\budgettracker\markup.h
+	<stdlib.h>
+	<string.h>
+	<string>
+	<afx.h>
+
+1655228054 source:c:\users\hubert\desktop\kurs\przysz³yprogramista-obiektowo\budgettracker\main.cpp
+	<iostream>
+	"Markup.h"
+
