@@ -12,6 +12,7 @@ public:
     static string convertCommaToDot();
     static string readLine();
     static string convertIntToString(int number);
+    static char readChar();
     static int convertStringToInt(string number);
 };
 

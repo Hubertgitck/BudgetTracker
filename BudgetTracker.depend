@@ -13,36 +13,39 @@
 	<string>
 	<afx.h>
 
-1655399904 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\main.cpp
+1655408100 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\main.cpp
 	<iostream>
-	"Markup.h"
-	<chrono>
-	<ctime>
-	"UsersMenager.h"
+	"BudgetingApp.h"
+	"BudgetTracker.h"
 
-1655304371 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgetingapp.cpp
+1655404853 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgetingapp.cpp
 	"BudgetingApp.h"
 
-1655304371 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgetingapp.h
+1655404617 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgetingapp.h
 	<iostream>
+	"BudgetTracker.h"
+	"UsersMenager.h"
 
-1655374795 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\auxiliarymethods.cpp
+1655404416 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\auxiliarymethods.cpp
 	"AuxiliaryMethods.h"
 
-1655374795 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\auxiliarymethods.h
+1655404409 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\auxiliarymethods.h
 	<iostream>
 	<sstream>
 
-1655304836 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettracker.cpp
+1655408085 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettracker.cpp
 	"BudgetTracker.h"
 
-1655304750 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettracker.h
+1655408155 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettracker.h
 	<iostream>
+	<ctime>
+	<string>
+	"AuxiliaryMethods.h"
 
 1655304835 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettrackerfile.cpp
 	"BudgetTrackerFile.h"
 
-1655304749 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettrackerfile.h
+1655404952 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettrackerfile.h
 	<iostream>
 
 1655306159 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\operation.cpp
@@ -51,27 +54,27 @@
 1655305849 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\operation.h
 	<iostream>
 
-1655398408 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\textfile.cpp
+1655403052 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\textfile.cpp
 	"TextFile.h"
 
-1655399841 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\textfile.h
+1655403052 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\textfile.h
 	<iostream>
 	"Markup.h"
 
-1655399727 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\usersfile.cpp
+1655402978 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\usersfile.cpp
 	"UsersFile.h"
 
-1655398056 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\usersfile.h
+1655402978 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\usersfile.h
 	<iostream>
 	<vector>
 	"TextFile.h"
 	"User.h"
 	"AuxiliaryMethods.h"
 
-1655398062 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\usersmenager.cpp
+1655402978 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\usersmenager.cpp
 	"UsersMenager.h"
 
-1655397415 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\usersmenager.h
+1655403053 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\usersmenager.h
 	<iostream>
 	<vector>
 	"User.h"

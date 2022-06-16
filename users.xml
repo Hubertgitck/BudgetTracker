@@ -24,4 +24,10 @@
 <Login>janek</Login>
 <Password>12345</Password>
 </User>
+<User ID="5">
+<Name>Paulina</Name>
+<LastName>Zapala</LastName>
+<Login>paulina</Login>
+<Password>12345</Password>
+</User>
 </Users>
