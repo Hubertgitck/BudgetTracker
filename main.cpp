@@ -5,8 +5,20 @@
 
 using namespace std;
 
+/*
 int main()
 {
 
     return 0;
 }
+*/
+
+#include "UsersMenager.h"
+
+int main(){
+
+    UsersMenager usersMenager;
+
+    usersMenager.userRegistration();
+}
+

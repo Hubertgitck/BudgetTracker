@@ -3,9 +3,17 @@
 
 #include <iostream>
 
+#include "Markup.h"
+
 using namespace std;
 
+class TextFile{
 
+
+protected:
+    CMarkup xml;
+    bool checkIfFileEmpty();
+};
 
 
 #endif
