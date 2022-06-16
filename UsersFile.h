@@ -13,9 +13,10 @@ using namespace std;
 class UsersFile:public TextFile{
 
 public:
+    UsersFile(string filename) : TextFile(filename){};
     vector <User> readAllUsersFromFile();
     void addUserToFile(User user);
-    void editUser(int loggedUserId, string newPassword);
+    void editUserPassword(int loggedUserId, string newPassword);
 };
 
 

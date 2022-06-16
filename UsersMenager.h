@@ -20,14 +20,17 @@ class UsersMenager {
     bool checkIfLoginExists(string login);
 
 public:
-    UsersMenager(){
+    UsersMenager(string filename) : usersFile(filename){
         users = usersFile.readAllUsersFromFile();
-        loggedUserId = 1;
+        loggedUserId = 0;
     }
     int logIn();
+    int getLoggedUserId();
+    bool checkIfUserIsLoggedIn();
 
     void userRegistration();
     void changePassword();
+    void logOut();
 
 
 };

@@ -17,7 +17,7 @@ int main()
 
 int main(){
 
-    UsersMenager usersMenager;
+    UsersMenager usersMenager("users.xml");
 
     //usersMenager.userRegistration();
     usersMenager.logIn();

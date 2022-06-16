@@ -9,7 +9,7 @@ vector <User> UsersFile::readAllUsersFromFile(){
         xml.FindElem();
         xml.IntoElem();
 
-        while (xml.FindElem("User")){
+        while (xml.FindElem()){
             user.setId(AuxiliaryMethods::convertStringToInt(xml.GetAttrib("ID")));
 
             xml.IntoElem();
@@ -48,15 +48,14 @@ void UsersFile::addUserToFile(User user){
     xml.AddElem("Login", user.getLogin());
     xml.AddElem("Password", user.getPassword());
 
-    xml.ResetMainPos();
-    xml.Save("users.xml");
+    xml.Save(getFilename());
 
 }
 
-void UsersFile::editUser(int loggedUserId, string newPassword){
+void UsersFile::editUserPassword(int loggedUserId, string newPassword){
 
     string loggedUserIdString = AuxiliaryMethods::convertIntToString(loggedUserId);
-    xml.Load("users.xml");
+    xml.Load(getFilename());
     xml.FindElem();
     xml.IntoElem();
 
@@ -68,5 +67,5 @@ void UsersFile::editUser(int loggedUserId, string newPassword){
             break;
         }
     }
-    xml.Save("users.xml");
+    xml.Save(getFilename());
 }

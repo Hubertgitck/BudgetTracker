@@ -12,4 +12,16 @@
 <Login>marcin</Login>
 <Password>123</Password>
 </User>
+<User ID="3">
+<Name>Agata</Name>
+<LastName>Koziel</LastName>
+<Login>agata</Login>
+<Password>123</Password>
+</User>
+<User ID="4">
+<Name>Janek</Name>
+<LastName>Wieczorek</LastName>
+<Login>janek</Login>
+<Password>12345</Password>
+</User>
 </Users>

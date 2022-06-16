@@ -63,7 +63,7 @@ void UsersMenager::changePassword(){
             system("pause");
         }
     }
-    usersFile.editUser(loggedUserId,newPassword);
+    usersFile.editUserPassword(loggedUserId,newPassword);
 }
 
 int UsersMenager::logIn(){
@@ -97,5 +97,21 @@ int UsersMenager::logIn(){
     cout << "Nie ma uzytkownika z takim loginem" << '\n' << '\n';
     system("pause");
     return 0;
+}
+
+void UsersMenager::logOut(){
+    loggedUserId = 0;
+}
+
+
+bool UsersMenager::checkIfUserIsLoggedIn(){
+    if (loggedUserId > 0)
+        return true;
+    else
+        return false;
+}
+
+int UsersMenager::getLoggedUserId(){
+    return loggedUserId;
 }
 
