@@ -11,6 +11,7 @@ class AuxiliaryMethods{
 public:
     static string convertCommaToDot();
     static string readLine();
+    static string convertIntToString(int number);
     static int convertStringToInt(string number);
 };
 

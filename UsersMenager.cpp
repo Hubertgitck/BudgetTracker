@@ -32,8 +32,7 @@ User UsersMenager::giveNewUserData(){
     return user;
 }
 
-int UsersMenager::getNewUserId()
-{
+int UsersMenager::getNewUserId(){
     if (users.empty())
         return 1;
     else
@@ -49,3 +48,54 @@ bool UsersMenager::checkIfLoginExists(string login){
     }
     return false;
 }
+
+void UsersMenager::changePassword(){
+
+    User user;
+    string newPassword = "";
+    cout << "Podaj nowe haslo: ";
+    newPassword = AuxiliaryMethods::readLine();
+
+    for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++){
+        if (itr -> getId() == loggedUserId){
+            itr -> setPassword(newPassword);
+            cout << "Haslo zostalo zmienione." << '\n' << '\n';
+            system("pause");
+        }
+    }
+    usersFile.editUser(loggedUserId,newPassword);
+}
+
+int UsersMenager::logIn(){
+
+    User user;
+    string login = "", password = "";
+
+    cout << '\n' << "Podaj login: ";
+    login = AuxiliaryMethods::readLine();
+
+    vector <User>::iterator itr = users.begin();
+    while (itr != users.end()){
+        if (itr -> getLogin() == login){
+            for (int trials = 3; trials > 0; trials--){
+                cout << "Podaj haslo. Pozostalo prob: " << trials << ": ";
+                password = AuxiliaryMethods::readLine();
+
+                if (itr -> getPassword() == password){
+                    cout << '\n' << "Zalogowales sie." << '\n' << '\n';
+                    system("pause");
+                    loggedUserId = itr -> getId();
+                    return loggedUserId;
+                }
+            }
+            cout << "Wprowadzono 3 razy bledne haslo." << '\n';
+            system("pause");
+            return 0;
+        }
+        itr++;
+    }
+    cout << "Nie ma uzytkownika z takim loginem" << '\n' << '\n';
+    system("pause");
+    return 0;
+}
+

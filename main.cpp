@@ -19,6 +19,8 @@ int main(){
 
     UsersMenager usersMenager;
 
-    usersMenager.userRegistration();
+    //usersMenager.userRegistration();
+    usersMenager.logIn();
+    usersMenager.changePassword();
 }
 

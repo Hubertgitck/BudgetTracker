@@ -22,9 +22,13 @@ class UsersMenager {
 public:
     UsersMenager(){
         users = usersFile.readAllUsersFromFile();
+        loggedUserId = 1;
     }
+    int logIn();
 
     void userRegistration();
+    void changePassword();
+
 
 };
 

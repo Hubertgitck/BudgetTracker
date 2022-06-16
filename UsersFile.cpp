@@ -5,16 +5,14 @@ vector <User> UsersFile::readAllUsersFromFile(){
     vector <User> users;
     User user;
 
-    if (!checkIfFileEmpty())
-        return;
-    else{
+    if (checkIfFileEmpty()){
         xml.FindElem();
         xml.IntoElem();
 
         while (xml.FindElem("User")){
+            user.setId(AuxiliaryMethods::convertStringToInt(xml.GetAttrib("ID")));
+
             xml.IntoElem();
-            xml.FindElem();
-            user.setId(AuxiliaryMethods::convertStringToInt(xml.GetData()));
             xml.FindElem();
             user.setName(xml.GetData());
             xml.FindElem();
@@ -22,11 +20,12 @@ vector <User> UsersFile::readAllUsersFromFile(){
             xml.FindElem();
             user.setLogin(xml.GetData());
             xml.FindElem();
-            user.setPassword(xml.GetData());
+            user.setPassword(xml.GetData());\
 
             xml.OutOfElem();
             users.push_back(user);
         }
+    xml.ResetMainPos();
     return users;
     }
 }
@@ -42,13 +41,32 @@ void UsersFile::addUserToFile(User user){
     xml.FindElem();
     xml.IntoElem();
     xml.AddElem("User");
+    xml.SetAttrib("ID", user.getId());
     xml.IntoElem();
-    xml.AddElem("UserId", user.getId());
     xml.AddElem("Name", user.getName());
     xml.AddElem("LastName", user.getLastName());
     xml.AddElem("Login", user.getLogin());
     xml.AddElem("Password", user.getPassword());
 
+    xml.ResetMainPos();
     xml.Save("users.xml");
 
+}
+
+void UsersFile::editUser(int loggedUserId, string newPassword){
+
+    string loggedUserIdString = AuxiliaryMethods::convertIntToString(loggedUserId);
+    xml.Load("users.xml");
+    xml.FindElem();
+    xml.IntoElem();
+
+    while (xml.FindElem()){
+        if (xml.GetAttrib("ID")==loggedUserIdString){
+            xml.IntoElem();
+            xml.FindElem("Password");
+            xml.SetData(newPassword);
+            break;
+        }
+    }
+    xml.Save("users.xml");
 }

@@ -15,6 +15,7 @@ class UsersFile:public TextFile{
 public:
     vector <User> readAllUsersFromFile();
     void addUserToFile(User user);
+    void editUser(int loggedUserId, string newPassword);
 };
 
 

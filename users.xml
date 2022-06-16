@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Users>
-<User>
-<UserId>1</UserId>
+<User ID="1">
 <Name>Hubert</Name>
 <LastName>Koziel</LastName>
 <Login>hubert</Login>
-<Password>123</Password>
+<Password>1234</Password>
 </User>
-<User>
-<UserId>1</UserId>
+<User ID="2">
 <Name>Marcin</Name>
 <LastName>Koziel</LastName>
 <Login>marcin</Login>
-<Password>345</Password>
+<Password>123</Password>
 </User>
 </Users>
