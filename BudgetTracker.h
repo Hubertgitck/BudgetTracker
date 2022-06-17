@@ -4,14 +4,17 @@
 #include <iostream>
 #include <ctime>
 #include <string>
-#include <string.h>
+#include <vector>
+#include <iomanip>
 
 #include "AuxiliaryMethods.h"
+#include "Operation.h"
 
 using namespace std;
 
 class BudgetTracker{
 
+    vector <Operation> operations;
     const int LOGGED_USER_ID;
 
     bool checkDateIntegrity(int year, int month, int day);
@@ -20,8 +23,8 @@ class BudgetTracker{
     int getCurrentDay();
 
 public:
-    long int getCurrentDate();
-    long int insertDate();
+    int getCurrentDate();
+    int insertDate();
     int checkNumberOfDaysInMonth(int month,int year);
     BudgetTracker(){}
     ~BudgetTracker(){}

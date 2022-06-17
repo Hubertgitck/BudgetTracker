@@ -19,9 +19,9 @@ void Operation::setAmount(double newAmount){
         amount = newAmount;
 }
 
-void Operation::setOperationDescription(string newOperationDescription){
-    if (newOperationDescription != "")
-        operationDescription = newOperationDescription;
+void Operation::setDescription(string newDescription){
+    if (newDescription != "")
+        description = newDescription;
 }
 
 int Operation::getOperationId(){
@@ -40,7 +40,7 @@ double Operation::getAmount(){
     return amount;
 }
 
-string Operation::getOperationDescription(){
-    return operationDescription;
+string Operation::getDescription(){
+    return description;
 }
 

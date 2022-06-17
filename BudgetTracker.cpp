@@ -1,11 +1,73 @@
 #include "BudgetTracker.h"
 
+void BudgetTracker::addIncome(){
+    Operation operation;
+    char choice;
+    string amount="";
 
+    cout << "1.Dodaj przychod z data dzisiejsza " << '\n' ;
+    cout << "2.Dodaj przychod z okreslona data" << '\n';
+    cout << "Twoj wybor: ";
+    choice = AuxiliaryMethods::readChar();
 
+    switch (choice){
+        case '1':
+            operation.setDate(getCurrentDate());
+            break;
+        case '2':
+            operation.setDate(insertDate());
+            break;
+    }
+    cout << '\n' << "Czego dotyczy przychod? ";
+    operation.setDescription(AuxiliaryMethods::readLine());
 
-long int BudgetTracker::getCurrentDate(){
+    cout << '\n' << "Podaj kwote przychodu: ";
+    amount = AuxiliaryMethods::readLine();
+    amount = AuxiliaryMethods::convertCommaToDot(amount);
+    operation.setAmount(AuxiliaryMethods::convertStringTodouble(amount));
+
+    operations.push_back(operation);
+}
+
+void BudgetTracker::addExpense(){
+    Operation operation;
+    char choice;
+    string amount="";
+
+    cout << "1.Dodaj wydatek z data dzisiejsza " << '\n' ;
+    cout << "2.Dodaj wydatek z okreslona data" << '\n';
+    cout << "Twoj wybor: ";
+    choice = AuxiliaryMethods::readChar();
+
+    switch (choice){
+        case '1':
+            operation.setDate(getCurrentDate());
+            break;
+        case '2':
+            operation.setDate(insertDate());
+            break;
+    }
+    cout << '\n' << "Czego dotyczy wydatek? ";
+    operation.setDescription(AuxiliaryMethods::readLine());
+
+    cout << '\n' << "Podaj kwote wydatku: ";
+    amount = AuxiliaryMethods::readLine();
+    cout << '\n' << amount;
+    amount = AuxiliaryMethods::convertCommaToDot(amount);
+    cout << setprecision(15);
+    cout << '\n' << amount;
+    operation.setAmount(AuxiliaryMethods::convertStringTodouble(amount)*(-1));
+    operations.push_back(operation);
+
+    cout << '\n' << operations[0].getAmount() << '\n';
+    cout << setprecision(15);
+    cout << operations[0].getAmount() << '\n';
+
+}
+
+int BudgetTracker::getCurrentDate(){
     string currentDateString = "";
-    long int currentDateInteger = 0;
+    int currentDateInteger = 0;
 
     currentDateString = AuxiliaryMethods::convertIntToString(getCurrentYear());
     // adding 0 when month is less than 10
@@ -26,14 +88,14 @@ long int BudgetTracker::getCurrentDate(){
     return currentDateInteger;
 }
 
-long int BudgetTracker::insertDate(){
+int BudgetTracker::insertDate(){
     string insertedDate = "";
     string insertedDateWithoutDashes = "";
     string token="",year="",month="",day="";
     int tokenCounter = 1;
-    long int insertedDateAsInteger = 0;
+    int insertedDateAsInteger = 0;
 
-    cout << "Podaj date operacji yyyy-mm-dd: ";
+    cout << "Podaj date operacji (yyyy-mm-dd): ";
     insertedDate = AuxiliaryMethods::readLine();
 
     //Spliting string into tokens

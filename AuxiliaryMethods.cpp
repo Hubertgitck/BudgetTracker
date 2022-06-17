@@ -1,10 +1,5 @@
 #include "AuxiliaryMethods.h"
 
-
-string AuxiliaryMethods::convertCommaToDot(){
-    return "";
-}
-
 string AuxiliaryMethods::readLine(){
     string input = "";
     getline(cin, input);
@@ -39,4 +34,20 @@ string AuxiliaryMethods::convertIntToString(int number){
     ss << number;
     string str = ss.str();
     return str;
+}
+
+string AuxiliaryMethods::convertCommaToDot(string stringWithComma){
+    string stringWithDot="";
+
+    for (int i = 0; i < stringWithComma.size(); i++){
+        if (stringWithComma[i] == ',')
+            stringWithDot += ".";
+        else
+            stringWithDot += stringWithComma[i];
+    }
+    return stringWithDot;
+}
+
+double AuxiliaryMethods::convertStringTodouble(string stringToConvert){
+    return stod(stringToConvert);
 }

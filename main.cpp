@@ -33,12 +33,14 @@ int main(){
 */
 
 #include "BudgetTracker.h"
-
 int main(){
 
     BudgetTracker budgetTracker;
 
-    cout << budgetTracker.getCurrentDate();
+    //budgetTracker.getCurrentDate();
     //budgetTracker.insertDate();
+
+    //budgetTracker.addIncome();
+    budgetTracker.addExpense();
 }
 
