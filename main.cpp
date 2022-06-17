@@ -38,7 +38,7 @@ int main(){
 
     BudgetTracker budgetTracker;
 
-    budgetTracker.getCurrentDate();
-    budgetTracker.insertDate();
+    cout << budgetTracker.getCurrentDate();
+    //budgetTracker.insertDate();
 }
 

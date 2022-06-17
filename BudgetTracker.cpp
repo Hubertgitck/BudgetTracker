@@ -1,32 +1,119 @@
 #include "BudgetTracker.h"
 
+
+
+
 long int BudgetTracker::getCurrentDate(){
     string currentDateString = "";
     long int currentDateInteger = 0;
-    time_t t = time(0);
 
-    tm* now = localtime(&t);
-
-    currentDateString = AuxiliaryMethods::convertIntToString(now -> tm_year + 1900) +
-    AuxiliaryMethods::convertIntToString(now -> tm_mon + 1) + AuxiliaryMethods::convertIntToString(now -> tm_mday);
-
+    currentDateString = AuxiliaryMethods::convertIntToString(getCurrentYear());
+    // adding 0 when month is less than 10
+    if (getCurrentMonth() < 10){
+        currentDateString = currentDateString + "0" + AuxiliaryMethods::convertIntToString(getCurrentMonth());
+    }
+    else{
+        currentDateString = currentDateString + AuxiliaryMethods::convertIntToString(getCurrentMonth());
+    }
+    // adding 0 when day is less than 10
+    if (getCurrentDay() < 10){
+        currentDateString = currentDateString + "0" + AuxiliaryMethods::convertIntToString(getCurrentDay());
+    }
+    else{
+        currentDateString = currentDateString + AuxiliaryMethods::convertIntToString(getCurrentDay());
+    }
     currentDateInteger = AuxiliaryMethods::convertStringToInt(currentDateString);
-
     return currentDateInteger;
 }
 
 long int BudgetTracker::insertDate(){
-    string insertedDateString = "";
-    long int insertedDateInteger = 0;
+    string insertedDate = "";
+    string insertedDateWithoutDashes = "";
+    string token="",year="",month="",day="";
+    int tokenCounter = 1;
+    long int insertedDateAsInteger = 0;
 
-    cout << "Podaj date operacji: ";
-    insertedDateString = AuxiliaryMethods::readLine();
+    cout << "Podaj date operacji yyyy-mm-dd: ";
+    insertedDate = AuxiliaryMethods::readLine();
 
-    for (string::iterator itr = insertedDateString.begin(); itr != insertedDateString.end(); itr++){
-        if (*itr == '-')
-            insertedDateString.erase(itr);
+    //Spliting string into tokens
+    istringstream ss(insertedDate);
+
+    while(!ss.eof()){
+        getline(ss, token, '-');
+        switch (tokenCounter){
+        case 1:
+            year = token;
+            break;
+        case 2:
+            month = token;
+            break;
+        case 3:
+            day = token;
+            break;
+        }
+    tokenCounter++;
     }
-    cout << insertedDateString;
+
+    insertedDateWithoutDashes = year+month+day;
+
+    if (!checkDateIntegrity(AuxiliaryMethods::convertStringToInt(year), AuxiliaryMethods::convertStringToInt(month),
+        AuxiliaryMethods::convertStringToInt(day))){
+            cout << "Wprowadzona bledna date operacji! Wpisz date w formacie yyyy-mm-dd";
+    }
+
+    insertedDateAsInteger = AuxiliaryMethods::convertStringToInt(insertedDateWithoutDashes);
+    return insertedDateAsInteger;
+}
+
+bool BudgetTracker::checkDateIntegrity(int year, int month, int day){
+    // Date lower range is 2000-01-01 ; upper range is last day of current month
+    int yearLowerRange = 2000;
+    int yearUpperRange = getCurrentYear();
+
+    if (year < yearLowerRange || year > yearUpperRange)
+        return false;
+
+    if (month < 1 || month > 12 || (year == getCurrentYear() && month > getCurrentMonth()) )
+        return false;
+
+    if (day < 1 || day > checkNumberOfDaysInMonth(month, year))
+        return false;
+
+    return true;
+}
+
+int BudgetTracker::getCurrentYear(){
+    int currentYear = 0;
+    time_t t = time(0);
+
+    tm* now = localtime(&t);
+
+    currentYear = (now -> tm_year + 1900);
+
+    return currentYear;
+}
+
+int BudgetTracker::getCurrentMonth(){
+    int currentMonth = 0;
+    time_t t = time(0);
+
+    tm* now = localtime(&t);
+
+    currentMonth = (now -> tm_mon + 1);
+
+    return currentMonth;
+}
+
+int BudgetTracker::getCurrentDay(){
+    int currentDay = 0;
+    time_t t = time(0);
+
+    tm* now = localtime(&t);
+
+    currentDay = (now -> tm_mday);
+
+    return currentDay;
 }
 
 int BudgetTracker::checkNumberOfDaysInMonth(int month, int year){
@@ -42,3 +129,4 @@ int BudgetTracker::checkNumberOfDaysInMonth(int month, int year){
 	else
 		return 30;
 }
+

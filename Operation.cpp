@@ -10,6 +10,10 @@ void Operation::setUserId(int newUserId){
         userId = newUserId;
 }
 
+void Operation::setDate(int newDate){
+    date = newDate;
+}
+
 void Operation::setAmount(double newAmount){
     if (newAmount != 0)
         amount = newAmount;
@@ -26,6 +30,10 @@ int Operation::getOperationId(){
 
 int Operation::getUserId(){
     return userId;
+}
+
+int Operation::getDate(){
+    return date;
 }
 
 double Operation::getAmount(){

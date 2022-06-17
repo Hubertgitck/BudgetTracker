@@ -4,7 +4,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>720</x>
+      <x>504</x>
       <y>0</y>
       <w>456</w>
       <h>372</h>
@@ -22,7 +22,7 @@
 + userRegistration() : void
 + logOut() : void
 + logIn() : void
-+ changedLoggedUserPassworw() : void
++ changedLoggedUserPassword() : void
 
 bg=CYAN</panel_attributes>
     <additional_attributes/>
@@ -30,7 +30,7 @@ bg=CYAN</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>336</x>
+      <x>120</x>
       <y>468</y>
       <w>444</w>
       <h>372</h>
@@ -39,6 +39,7 @@ bg=CYAN</panel_attributes>
 --
 - loggedUserId : Integer
 - users : vector &lt;User&gt;
+- UsersFile usersFile;
 --
 +UsersMenager()
 + userRegistration() : void
@@ -56,7 +57,7 @@ bg=BLUE</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1212</x>
+      <x>996</x>
       <y>468</y>
       <w>420</w>
       <h>372</h>
@@ -64,7 +65,7 @@ bg=BLUE</panel_attributes>
     <panel_attributes>BudgetTracker
 --
 - LOGGED_USER_ID : Integer
-- getTodaysDate() : String
+- getCurrentDate() : String
 - insertDate() : String
 --
 +BudgetTracker()
@@ -82,7 +83,7 @@ bg=GREEN</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>384</x>
+      <x>168</x>
       <y>1368</y>
       <w>384</w>
       <h>144</h>
@@ -92,34 +93,35 @@ bg=GREEN</panel_attributes>
 
 --
 + UsersFile()
-+ readAllUsersFromFile() : vector
++ readAllUsersFromFile() : vector &lt;User&gt;
 + addUserToFile() : void
-+ saveAllUsersToFile
++ editUserPassword(int loggedUserId, string newPassword) : void
 bg=BLUE</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>852</x>
+      <x>636</x>
       <y>1236</y>
       <w>276</w>
       <h>144</h>
     </coordinates>
     <panel_attributes>TextFile
 --
-- FILENAME : String
+# FILENAME : String
 --
 + TextFile()
 + getFilename() : String
-+ checkIfFileEmpty() Bool
+# checkIfFileEmpty() Bool
+# xml : CMarkup
 bg=YELLOW</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>216</x>
+      <x>0</x>
       <y>924</y>
       <w>252</w>
       <h>360</h>
@@ -151,7 +153,7 @@ bg=BLUE</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1404</x>
+      <x>1188</x>
       <y>972</y>
       <w>420</w>
       <h>288</h>
@@ -178,7 +180,7 @@ bg=GREEN</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1188</x>
+      <x>972</x>
       <y>1356</y>
       <w>468</w>
       <h>180</h>
@@ -198,7 +200,7 @@ bg=GREEN</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>612</x>
+      <x>396</x>
       <y>360</y>
       <w>276</w>
       <h>132</h>
@@ -209,7 +211,7 @@ bg=GREEN</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>972</x>
+      <x>756</x>
       <y>360</y>
       <w>420</w>
       <h>132</h>
@@ -220,7 +222,7 @@ bg=GREEN</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1548</x>
+      <x>1332</x>
       <y>828</y>
       <w>36</w>
       <h>168</h>
@@ -231,7 +233,7 @@ bg=GREEN</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1332</x>
+      <x>1116</x>
       <y>828</y>
       <w>36</w>
       <h>552</h>
@@ -242,7 +244,7 @@ bg=GREEN</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1572</x>
+      <x>1356</x>
       <y>1248</y>
       <w>36</w>
       <h>132</h>
@@ -253,7 +255,7 @@ bg=GREEN</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1056</x>
+      <x>840</x>
       <y>1368</y>
       <w>156</w>
       <h>120</h>
@@ -264,7 +266,7 @@ bg=GREEN</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>756</x>
+      <x>540</x>
       <y>1368</y>
       <w>168</w>
       <h>132</h>
@@ -275,22 +277,25 @@ bg=GREEN</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>816</x>
+      <x>492</x>
       <y>984</y>
-      <w>276</w>
+      <w>456</w>
       <h>144</h>
     </coordinates>
     <panel_attributes>AuxiliaryMethods
 --
-+ convertCommaToDot() : String
-+ readLine() : String
+_+ convertCommaToDot(string stringWithComma) : String_
+_+ convertIntToString(int number) : String_
+_+ readLine() : String_
+_+ readChar() : Char_
+_+ convertStringToInt(string number) : Integer_
 bg=ORANGE</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>672</x>
+      <x>456</x>
       <y>828</y>
       <w>240</w>
       <h>180</h>
@@ -301,7 +306,7 @@ bg=ORANGE</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1032</x>
+      <x>816</x>
       <y>828</y>
       <w>252</w>
       <h>180</h>
@@ -312,7 +317,7 @@ bg=ORANGE</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>660</x>
+      <x>444</x>
       <y>1116</y>
       <w>240</w>
       <h>276</h>
@@ -323,7 +328,7 @@ bg=ORANGE</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1008</x>
+      <x>792</x>
       <y>1116</y>
       <w>252</w>
       <h>264</h>
@@ -334,7 +339,7 @@ bg=ORANGE</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>372</x>
+      <x>156</x>
       <y>828</y>
       <w>36</w>
       <h>120</h>
@@ -345,7 +350,7 @@ bg=ORANGE</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>552</x>
+      <x>336</x>
       <y>828</y>
       <w>36</w>
       <h>564</h>
@@ -356,7 +361,7 @@ bg=ORANGE</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>408</x>
+      <x>192</x>
       <y>1272</y>
       <w>36</w>
       <h>120</h>
@@ -367,35 +372,25 @@ bg=ORANGE</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>864</x>
+      <x>648</x>
       <y>1656</y>
       <w>252</w>
-      <h>120</h>
+      <h>60</h>
     </coordinates>
     <panel_attributes>Markup
---</panel_attributes>
+--
+external library :  XML parser</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1020</x>
-      <y>1524</y>
-      <w>240</w>
-      <h>156</h>
+      <x>744</x>
+      <y>1368</y>
+      <w>36</w>
+      <h>312</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;110.0;10.0;60.0;180.0;60.0;180.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>612</x>
-      <y>1500</y>
-      <w>336</w>
-      <h>180</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>260.0;130.0;260.0;90.0;10.0;90.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;240.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
