@@ -9,12 +9,14 @@
 
 #include "AuxiliaryMethods.h"
 #include "Operation.h"
+#include "BudgetTrackerFile.h"
 
 using namespace std;
 
 class BudgetTracker{
 
     vector <Operation> operations;
+    BudgetTrackerFile budgetTrackerFile;
     const int LOGGED_USER_ID;
     bool checkDateIntegrity(int year, int month, int day);
     int getCurrentDate();
@@ -23,12 +25,11 @@ class BudgetTracker{
     int getCurrentDay();
     int insertDate();
     int checkNumberOfDaysInMonth(int month,int year);
+    int getNewOperationId();
     string formatDateToReadable(int dateInteger);
 
 public:
-
-
-    BudgetTracker(){}
+    BudgetTracker(string filename) : budgetTrackerFile(filename){}
     ~BudgetTracker(){}
 
     void addIncome();

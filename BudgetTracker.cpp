@@ -27,6 +27,7 @@ void BudgetTracker::addIncome(){
     operation.setAmount(AuxiliaryMethods::convertStringTodouble(amount));
 
     operations.push_back(operation);
+    budgetTrackerFile.addNewOperationToFile(operation);
 }
 
 void BudgetTracker::addExpense(){
@@ -47,6 +48,8 @@ void BudgetTracker::addExpense(){
             operation.setDate(insertDate());
             break;
     }
+    operation.setOperationId(getNewOperationId());
+
     cout << '\n' << "Czego dotyczy wydatek? ";
     operation.setDescription(AuxiliaryMethods::readLine());
 
@@ -56,6 +59,7 @@ void BudgetTracker::addExpense(){
 
     operation.setAmount(AuxiliaryMethods::convertStringTodouble(amount)*(-1)); //*-1 because its an expense
     operations.push_back(operation);
+    budgetTrackerFile.addNewOperationToFile(operation);
 }
 
 void BudgetTracker::currentMonthBalance(){
@@ -66,7 +70,7 @@ void BudgetTracker::currentMonthBalance(){
     for (vector<Operation>::iterator itr = operations.begin(); itr != operations.end(); itr++){
         if (itr -> getDate() > (getCurrentDate() - getCurrentDay()))
             if ((itr -> getAmount()) > 0){
-                cout << formatDateToReadable(itr -> getDate()) << " " << itr -> getDescription() << " " << itr -> getAmount();
+                cout << AuxiliaryMethods::formatDateToReadable(itr -> getDate()) << " " << itr -> getDescription() << " " << itr -> getAmount();
         }
     }
 }
@@ -198,13 +202,11 @@ int BudgetTracker::checkNumberOfDaysInMonth(int month, int year){
 		return 30;
 }
 
-string BudgetTracker::formatDateToReadable(int dateInteger){
-    string dateString = "";
-    dateString = AuxiliaryMethods::convertIntToString(dateInteger);
-    //insert dashes - into a string
-    dateString.insert(4,"-");
-    dateString.insert(7,"-");
 
-    return dateString;
+int BudgetTracker::getNewOperationId(){
+    if (operations.empty())
+        return 1;
+    else
+        return operations.back().getOperationId() + 1;
 }
 

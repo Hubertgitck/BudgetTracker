@@ -35,7 +35,7 @@ int main(){
 #include "BudgetTracker.h"
 int main(){
 
-    BudgetTracker budgetTracker;
+    BudgetTracker budgetTracker("operations.xml");
 
     //budgetTracker.getCurrentDate();
     //budgetTracker.insertDate();

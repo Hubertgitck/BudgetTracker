@@ -13,7 +13,7 @@
 	<string>
 	<afx.h>
 
-1655471078 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\main.cpp
+1655473008 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\main.cpp
 	<iostream>
 	"BudgetingApp.h"
 	"BudgetTracker.h"
@@ -26,17 +26,17 @@
 	"BudgetTracker.h"
 	"UsersMenager.h"
 
-1655470385 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\auxiliarymethods.cpp
+1655473477 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\auxiliarymethods.cpp
 	"AuxiliaryMethods.h"
 
-1655469674 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\auxiliarymethods.h
+1655473489 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\auxiliarymethods.h
 	<iostream>
 	<sstream>
 
-1655471758 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettracker.cpp
+1655473478 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettracker.cpp
 	"BudgetTracker.h"
 
-1655471462 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettracker.h
+1655472986 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettracker.h
 	<iostream>
 	<ctime>
 	<string>
@@ -44,12 +44,17 @@
 	<iomanip>
 	"AuxiliaryMethods.h"
 	"Operation.h"
-
-1655304835 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettrackerfile.cpp
 	"BudgetTrackerFile.h"
 
-1655404952 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettrackerfile.h
+1655473499 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettrackerfile.cpp
+	"BudgetTrackerFile.h"
+
+1655472902 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettrackerfile.h
 	<iostream>
+	<vector>
+	"TextFile.h"
+	"Operation.h"
+	"AuxiliaryMethods.h"
 
 1655469674 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\operation.cpp
 	"Operation.h"
@@ -64,7 +69,7 @@
 	<iostream>
 	"Markup.h"
 
-1655402978 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\usersfile.cpp
+1655472065 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\usersfile.cpp
 	"UsersFile.h"
 
 1655402978 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\usersfile.h

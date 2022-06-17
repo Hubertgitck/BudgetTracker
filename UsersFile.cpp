@@ -25,7 +25,6 @@ vector <User> UsersFile::readAllUsersFromFile(){
             xml.OutOfElem();
             users.push_back(user);
         }
-    xml.ResetMainPos();
     return users;
     }
 }
@@ -49,7 +48,6 @@ void UsersFile::addUserToFile(User user){
     xml.AddElem("Password", user.getPassword());
 
     xml.Save(getFilename());
-
 }
 
 void UsersFile::editUserPassword(int loggedUserId, string newPassword){

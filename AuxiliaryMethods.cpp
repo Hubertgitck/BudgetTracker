@@ -51,3 +51,13 @@ string AuxiliaryMethods::convertCommaToDot(string stringWithComma){
 double AuxiliaryMethods::convertStringTodouble(string stringToConvert){
     return stod(stringToConvert);
 }
+
+string AuxiliaryMethods::formatDateToReadable(int dateInteger){
+    string dateString = "";
+    dateString = convertIntToString(dateInteger);
+    //insert dashes - into a string
+    dateString.insert(4,"-");
+    dateString.insert(7,"-");
+
+    return dateString;
+}
