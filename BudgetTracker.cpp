@@ -52,17 +52,23 @@ void BudgetTracker::addExpense(){
 
     cout << '\n' << "Podaj kwote wydatku: ";
     amount = AuxiliaryMethods::readLine();
-    cout << '\n' << amount;
     amount = AuxiliaryMethods::convertCommaToDot(amount);
-    cout << setprecision(15);
-    cout << '\n' << amount;
-    operation.setAmount(AuxiliaryMethods::convertStringTodouble(amount)*(-1));
+
+    operation.setAmount(AuxiliaryMethods::convertStringTodouble(amount)*(-1)); //*-1 because its an expense
     operations.push_back(operation);
+}
 
-    cout << '\n' << operations[0].getAmount() << '\n';
+void BudgetTracker::currentMonthBalance(){
     cout << setprecision(15);
-    cout << operations[0].getAmount() << '\n';
+    cout << "<<<<BILANS OBECNEGO MIESIACA>>>>" << '\n';
+    cout << "Przychody: " << '\n';
 
+    for (vector<Operation>::iterator itr = operations.begin(); itr != operations.end(); itr++){
+        if (itr -> getDate() > (getCurrentDate() - getCurrentDay()))
+            if ((itr -> getAmount()) > 0){
+                cout << formatDateToReadable(itr -> getDate()) << " " << itr -> getDescription() << " " << itr -> getAmount();
+        }
+    }
 }
 
 int BudgetTracker::getCurrentDate(){
@@ -190,5 +196,15 @@ int BudgetTracker::checkNumberOfDaysInMonth(int month, int year){
 		return 31;
 	else
 		return 30;
+}
+
+string BudgetTracker::formatDateToReadable(int dateInteger){
+    string dateString = "";
+    dateString = AuxiliaryMethods::convertIntToString(dateInteger);
+    //insert dashes - into a string
+    dateString.insert(4,"-");
+    dateString.insert(7,"-");
+
+    return dateString;
 }
 

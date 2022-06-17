@@ -16,16 +16,18 @@ class BudgetTracker{
 
     vector <Operation> operations;
     const int LOGGED_USER_ID;
-
     bool checkDateIntegrity(int year, int month, int day);
+    int getCurrentDate();
     int getCurrentYear();
     int getCurrentMonth();
     int getCurrentDay();
-
-public:
-    int getCurrentDate();
     int insertDate();
     int checkNumberOfDaysInMonth(int month,int year);
+    string formatDateToReadable(int dateInteger);
+
+public:
+
+
     BudgetTracker(){}
     ~BudgetTracker(){}
 
