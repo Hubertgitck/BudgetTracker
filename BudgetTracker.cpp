@@ -4,6 +4,7 @@ void BudgetTracker::addIncome(){
     Operation operation;
     string amount="";
 
+    //get new income ID
     if (incomes.empty())
         operation.setOperationId(1);
     else
@@ -27,6 +28,7 @@ void BudgetTracker::addExpense(){
     Operation operation;
     string amount="";
 
+    //get new expense ID
     if (expenses.empty())
         operation.setOperationId(1);
     else
@@ -54,7 +56,7 @@ void BudgetTracker::currentMonthBalance(){
     currentMonthUpperRange = getCurrentDate();
 
     cout << setprecision(15);
-    cout << "<<<<BILANS OBECNEGO MIESIACA>>>>" << '\n';
+    cout << "<<<< BILANS OBECNEGO MIESIACA >>>>" << '\n';
 
     //executing sorting function
     operationsSort();
@@ -81,7 +83,7 @@ void BudgetTracker::lastMonthBalance(){
     }
 
     cout << setprecision(15);
-    cout << "<<<<BILANS OSTATNIEGO MIESIACA>>>>" << '\n';
+    cout << "<<<< BILANS OSTATNIEGO MIESIACA >>>>" << '\n';
 
     //executing sorting function
     operationsSort();
@@ -106,7 +108,8 @@ void BudgetTracker::selectedPeriodBalance(){
     selectedPeriodUpperRange = insertDate();
 
     cout << setprecision(15);
-    cout << "<<<<BILANS WYBRANEGO OKRESU>>>>" << '\n';
+    cout << "<<<< BILANS Z OKRESU OD " << AuxiliaryMethods::formatDateToReadable(selectedPeriodLowerRange) <<
+    " DO " << AuxiliaryMethods::formatDateToReadable(selectedPeriodUpperRange) << " >>>>" << '\n';
 
     //executing sorting function
     operationsSort();

@@ -13,7 +13,7 @@
 	<string>
 	<afx.h>
 
-1655749324 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\main.cpp
+1655751086 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\main.cpp
 	<iostream>
 	"BudgetingApp.h"
 	"BudgetTracker.h"
@@ -33,10 +33,10 @@
 	<iostream>
 	<sstream>
 
-1655750236 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettracker.cpp
+1655751380 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettracker.cpp
 	"BudgetTracker.h"
 
-1655750033 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettracker.h
+1655750940 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettracker.h
 	<iostream>
 	<ctime>
 	<string>

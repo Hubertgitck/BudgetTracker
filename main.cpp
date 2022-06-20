@@ -44,8 +44,8 @@ int main(){
     //budgetTracker.addExpense();budgetTracker.addExpense();
     //budgetTracker.addIncome(); budgetTracker.addExpense();
     budgetTracker.currentMonthBalance();
-    //budgetTracker.lastMonthBalance();
-    //budgetTracker.selectedPeriodBalance();
+    budgetTracker.lastMonthBalance();
+    budgetTracker.selectedPeriodBalance();
 
 }
 

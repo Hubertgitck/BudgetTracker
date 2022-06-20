@@ -30,7 +30,6 @@ class BudgetTracker{
     int getCurrentDay();
     int insertDate();
     int checkNumberOfDaysInMonth(int month,int year);
-    int getNewOperationId();
     string formatDateToReadable(int dateInteger);
     void operationsSort();
     int choseDateAssignment();
