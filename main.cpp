@@ -35,15 +35,17 @@ int main(){
 #include "BudgetTracker.h"
 int main(){
 
-    BudgetTracker budgetTracker("operations.xml");
+    BudgetTracker budgetTracker("incomes.xml","outcomes.xml");
 
     //budgetTracker.getCurrentDate();
     //budgetTracker.insertDate();
 
     //budgetTracker.addIncome();budgetTracker.addIncome();
     //budgetTracker.addExpense();budgetTracker.addExpense();
+    //budgetTracker.addIncome(); budgetTracker.addExpense();
     budgetTracker.currentMonthBalance();
-    budgetTracker.lastMonthBalance();
+    //budgetTracker.lastMonthBalance();
+    //budgetTracker.selectedPeriodBalance();
 
 }
 

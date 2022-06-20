@@ -4,15 +4,16 @@
 #include <iostream>
 #include <vector>
 
-#include "TextFile.h"
+#include "XmlFile.h"
 #include "Operation.h"
 #include "AuxiliaryMethods.h"
 
 using namespace std;
-class BudgetTrackerFile:public TextFile{
+class BudgetTrackerFile:public XmlFile{
 
 public:
-    BudgetTrackerFile(string filename) : TextFile(filename){};
+    BudgetTrackerFile(string filename) : XmlFile(filename){};
+
     vector <Operation> readAllOperationsFromFile();
     void addNewOperationToFile(Operation operation);
 };

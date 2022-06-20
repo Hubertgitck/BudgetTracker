@@ -1,10 +1,10 @@
-#include "TextFile.h"
+#include "XmlFile.h"
 
-string TextFile::getFilename(){
+string XmlFile::getFilename(){
     return FILENAME;
 }
 
-bool TextFile::checkIfFileEmpty(){
+bool XmlFile::checkIfFileEmpty(){
 
     bool fileExists = xml.Load(FILENAME);
         return fileExists;

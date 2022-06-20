@@ -2,23 +2,14 @@
 
 void BudgetTracker::addIncome(){
     Operation operation;
-    char choice;
     string amount="";
 
-    cout << "1.Dodaj przychod z data dzisiejsza " << '\n' ;
-    cout << "2.Dodaj przychod z okreslona data" << '\n';
-    cout << "Twoj wybor: ";
-    choice = AuxiliaryMethods::readChar();
+    if (incomes.empty())
+        operation.setOperationId(1);
+    else
+        operation.setOperationId(incomes.back().getOperationId() + 1);
 
-    switch (choice){
-        case '1':
-            operation.setDate(getCurrentDate());
-            break;
-        case '2':
-            operation.setDate(insertDate());
-            break;
-    }
-    operation.setOperationId(getNewOperationId());
+    operation.setDate(choseDateAssignment());
 
     cout << '\n' << "Czego dotyczy przychod? ";
     operation.setDescription(AuxiliaryMethods::readLine());
@@ -28,17 +19,20 @@ void BudgetTracker::addIncome(){
     amount = AuxiliaryMethods::convertCommaToDot(amount);
     operation.setAmount(AuxiliaryMethods::convertStringTodouble(amount));
 
-    operations.push_back(operation);
-    budgetTrackerFile.addNewOperationToFile(operation);
+    incomes.push_back(operation);
+    incomesFile.addNewOperationToFile(operation);
 }
 
 void BudgetTracker::addExpense(){
     Operation operation;
-    char choice;
     string amount="";
 
+    if (expenses.empty())
+        operation.setOperationId(1);
+    else
+        operation.setOperationId(expenses.back().getOperationId() + 1);
 
-    operation.setOperationId(getNewOperationId());
+    operation.setDate(choseDateAssignment());
 
     cout << '\n' << "Czego dotyczy wydatek? ";
     operation.setDescription(AuxiliaryMethods::readLine());
@@ -48,40 +42,30 @@ void BudgetTracker::addExpense(){
     amount = AuxiliaryMethods::convertCommaToDot(amount);
 
     operation.setAmount(AuxiliaryMethods::convertStringTodouble(amount)*(-1)); //*-1 because its an expense
-    operations.push_back(operation);
-    budgetTrackerFile.addNewOperationToFile(operation);
+    expenses.push_back(operation);
+    expensesFile.addNewOperationToFile(operation);
 }
 
 void BudgetTracker::currentMonthBalance(){
-    int currentMonthLowerRange = getCurrentDate() - getCurrentDay();
+    int currentMonthLowerRange = 0, currentMonthUpperRange = 0;
     double expenses = 0, incomes = 0, balance = 0;
+
+    currentMonthLowerRange = getCurrentDate() - getCurrentDay();
+    currentMonthUpperRange = getCurrentDate();
 
     cout << setprecision(15);
     cout << "<<<<BILANS OBECNEGO MIESIACA>>>>" << '\n';
-    cout << "PRZYCHODY: " << '\n';
 
     //executing sorting function
     operationsSort();
 
-    for (vector<Operation>::iterator itr = operations.begin(); itr != operations.end(); itr++){
-        if (itr -> getDate() > currentMonthLowerRange)
-            if ((itr -> getAmount()) > 0){
-                cout << "   " << AuxiliaryMethods::formatDateToReadable(itr -> getDate()) << " " << itr -> getDescription() << " " << itr -> getAmount() << '\n';
-                incomes += itr -> getAmount();
-        }
-    }
+    incomes = showIncomes(currentMonthLowerRange, currentMonthUpperRange);
+    expenses = showExpenses(currentMonthLowerRange, currentMonthUpperRange);
+    balance = incomes + expenses;
 
-    cout << '\n' << "WYDATKI: " << '\n';
-    for (vector<Operation>::iterator itr = operations.begin(); itr != operations.end(); itr++){
-        if (itr -> getDate() > currentMonthLowerRange)
-            if ((itr -> getAmount()) < 0){
-                cout << "   " << AuxiliaryMethods::formatDateToReadable(itr -> getDate()) << " " << itr -> getDescription() << " " << itr -> getAmount() << '\n';
-                expenses += itr -> getAmount();
-        }
-    }
     cout << '\n' << "Suma przychodow wynosi: " << incomes;
     cout << '\n' << "Suma wydatkow wynosi: " << expenses;
-    cout << '\n' << "BILANS: " << incomes + expenses << '\n';
+    cout << '\n' << "BILANS: " << balance << '\n';
 }
 
 void BudgetTracker::lastMonthBalance(){
@@ -98,79 +82,70 @@ void BudgetTracker::lastMonthBalance(){
 
     cout << setprecision(15);
     cout << "<<<<BILANS OSTATNIEGO MIESIACA>>>>" << '\n';
-    cout << "PRZYCHODY: " << '\n';
 
     //executing sorting function
     operationsSort();
 
-    for (vector<Operation>::iterator itr = operations.begin(); itr != operations.end(); itr++){
-        if (itr -> getDate() > lastMonthLowerRange && itr -> getDate() < lastMonthUpperRange)
-            if ((itr -> getAmount()) > 0){
-                cout << "   " << AuxiliaryMethods::formatDateToReadable(itr -> getDate()) << " " << itr -> getDescription() << " " << itr -> getAmount() << '\n';
-                incomes += itr -> getAmount();
-        }
-    }
+    incomes = showIncomes(lastMonthLowerRange, lastMonthUpperRange);
+    expenses = showExpenses(lastMonthLowerRange, lastMonthUpperRange);
+    balance = incomes + expenses;
 
-    cout << '\n' << "WYDATKI: " << '\n';
-    for (vector<Operation>::iterator itr = operations.begin(); itr != operations.end(); itr++){
-        if (itr -> getDate() > lastMonthLowerRange && itr -> getDate() < lastMonthUpperRange)
-            if ((itr -> getAmount()) < 0){
-                cout << "   " << AuxiliaryMethods::formatDateToReadable(itr -> getDate()) << " " << itr -> getDescription() << " " << itr -> getAmount() << '\n';
-                expenses += itr -> getAmount();
-        }
-    }
     cout << '\n' << "Suma przychodow wynosi: " << incomes;
     cout << '\n' << "Suma wydatkow wynosi: " << expenses;
-    cout << '\n' << "BILANS: " << incomes + expenses << '\n';
+    cout << '\n' << "BILANS: " << balance << '\n';
 }
 
 void BudgetTracker::selectedPeriodBalance(){
     int selectedPeriodLowerRange = 0, selectedPeriodUpperRange = 0;
-    double expenses = 0, incomes = 0, balance = 0;
+    double incomes = 0, expenses = 0, balance = 0;
 
+    cout << '\n' << "Podaj date poczatkowa: ";
+    selectedPeriodLowerRange = insertDate();
 
-    if (getCurrentMonth() != 1){
-        lastMonthLowerRange = getCurrentDate() - getCurrentDay() - 100;
-    }
-    else{
-        lastMonthLowerRange = getCurrentDate() - getCurrentDay() - 8900;
-    }
+    cout << '\n' << "Podaj date koncowa: ";
+    selectedPeriodUpperRange = insertDate();
 
     cout << setprecision(15);
-    cout << "<<<<BILANS OBECNEGO MIESIACA>>>>" << '\n';
-    cout << "PRZYCHODY: " << '\n';
+    cout << "<<<<BILANS WYBRANEGO OKRESU>>>>" << '\n';
 
     //executing sorting function
     operationsSort();
 
-    for (vector<Operation>::iterator itr = operations.begin(); itr != operations.end(); itr++){
-        if (itr -> getDate() > lastMonthLowerRange && itr -> getDate() < lastMonthUpperRange)
-            if ((itr -> getAmount()) > 0){
-                cout << "   " << AuxiliaryMethods::formatDateToReadable(itr -> getDate()) << " " << itr -> getDescription() << " " << itr -> getAmount() << '\n';
-                incomes += itr -> getAmount();
-        }
-    }
+    incomes = showIncomes(selectedPeriodLowerRange, selectedPeriodUpperRange);
+    expenses = showExpenses(selectedPeriodLowerRange, selectedPeriodUpperRange);
+    balance = incomes + expenses;
 
-    cout << '\n' << "WYDATKI: " << '\n';
-    for (vector<Operation>::iterator itr = operations.begin(); itr != operations.end(); itr++){
-        if (itr -> getDate() > lastMonthLowerRange && itr -> getDate() < lastMonthUpperRange)
-            if ((itr -> getAmount()) < 0){
-                cout << "   " << AuxiliaryMethods::formatDateToReadable(itr -> getDate()) << " " << itr -> getDescription() << " " << itr -> getAmount() << '\n';
-                expenses += itr -> getAmount();
-        }
-    }
     cout << '\n' << "Suma przychodow wynosi: " << incomes;
     cout << '\n' << "Suma wydatkow wynosi: " << expenses;
-    cout << '\n' << "BILANS: " << incomes + expenses << '\n';
+    cout << '\n' << "BILANS: " << balance << '\n';
 }
 
+int BudgetTracker::choseDateAssignment(){
+    Operation operation;
+    char choice;
+    cout << "1.Dodaj operacje z data dzisiejsza " << '\n' ;
+    cout << "2.Dodaj operacje z okreslona data" << '\n';
+    cout << "Twoj wybor: ";
+    choice = AuxiliaryMethods::readChar();
 
+    switch (choice){
+        case '1':
+            operation.setDate(getCurrentDate());
+            break;
+        case '2':
+            cout << "Podaj date operacji (yyyy-mm-dd): " << '\n';
+            operation.setDate(insertDate());
+            break;
+    }
+    return operation.getDate();
+}
 
 int BudgetTracker::getCurrentDate(){
     string currentDateString = "";
     int currentDateInteger = 0;
 
     currentDateString = AuxiliaryMethods::convertIntToString(getCurrentYear());
+
     // adding 0 when month is less than 10
     if (getCurrentMonth() < 10){
         currentDateString = currentDateString + "0" + AuxiliaryMethods::convertIntToString(getCurrentMonth());
@@ -178,6 +153,7 @@ int BudgetTracker::getCurrentDate(){
     else{
         currentDateString = currentDateString + AuxiliaryMethods::convertIntToString(getCurrentMonth());
     }
+
     // adding 0 when day is less than 10
     if (getCurrentDay() < 10){
         currentDateString = currentDateString + "0" + AuxiliaryMethods::convertIntToString(getCurrentDay());
@@ -198,7 +174,6 @@ int BudgetTracker::insertDate(){
 
     do{
         int tokenCounter = 1;
-        cout << "Podaj date operacji (yyyy-mm-dd): " << '\n';
         insertedDate = AuxiliaryMethods::readLine();
 
         //Spliting string into tokens
@@ -296,33 +271,44 @@ int BudgetTracker::checkNumberOfDaysInMonth(int month, int year){
 		return 30;
 }
 
-
-int BudgetTracker::getNewOperationId(){
-    if (operations.empty())
-        return 1;
-    else
-        return operations.back().getOperationId() + 1;
-}
-
 void BudgetTracker::operationsSort(){
+    sort( incomes.begin( ), incomes.end( ), [ ]( const auto&operation, const auto& nextOperation )
+    {
+        return operation.getDate() < nextOperation.getDate();
+    });
 
+    sort( expenses.begin( ), expenses.end( ), [ ]( const auto&operation, const auto& nextOperation )
+    {
+        return operation.getDate() < nextOperation.getDate();
+    });
 }
 
-Operation BudgetTracker::choseDateAssignment(){
-    Operation operation;
-    char choice = '';
-    cout << "1.Dodaj wydatek z data dzisiejsza " << '\n' ;
-    cout << "2.Dodaj wydatek z okreslona data" << '\n';
-    cout << "Twoj wybor: ";
-    choice = AuxiliaryMethods::readChar();
+double BudgetTracker::showIncomes(int lowerRange, int upperRange){
+    double totalIncomes = 0;
 
-    switch (choice){
-        case '1':
-            operation.setDate(getCurrentDate());
-            break;
-        case '2':
-            operation.setDate(insertDate());
-            break;
+    cout << "PRZYCHODY: " << '\n';
+
+    for (vector<Operation>::iterator itr = incomes.begin(); itr != incomes.end(); itr++){
+        if (itr -> getDate() >= lowerRange && itr -> getDate() <= upperRange){
+                cout << "   " << AuxiliaryMethods::formatDateToReadable(itr -> getDate()) << " " << itr -> getDescription() << " " << itr -> getAmount() << '\n';
+                totalIncomes += itr -> getAmount();
+        }
     }
-    return operation.getDate();
+return totalIncomes;
 }
+
+double BudgetTracker::showExpenses(int lowerRange, int upperRange){
+    double totalExpenses = 0;
+
+    cout << '\n' << "WYDATKI: " << '\n';
+
+    for (vector<Operation>::iterator itr = expenses.begin(); itr != expenses.end(); itr++){
+        if (itr -> getDate() >= lowerRange && itr -> getDate() <= upperRange){
+                cout << "   " << AuxiliaryMethods::formatDateToReadable(itr -> getDate()) << " " << itr -> getDescription() << " " << itr -> getAmount() << '\n';
+                totalExpenses += itr -> getAmount();
+        }
+    }
+return totalExpenses;
+}
+
+

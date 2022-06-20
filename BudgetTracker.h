@@ -16,8 +16,12 @@ using namespace std;
 
 class BudgetTracker{
 
-    vector <Operation> operations;
-    BudgetTrackerFile budgetTrackerFile;
+    vector <Operation> incomes;
+    vector <Operation> expenses;
+
+    BudgetTrackerFile incomesFile;
+    BudgetTrackerFile expensesFile;
+
     const int LOGGED_USER_ID;
     bool checkDateIntegrity(int year, int month, int day);
     int getCurrentDate();
@@ -29,10 +33,14 @@ class BudgetTracker{
     int getNewOperationId();
     string formatDateToReadable(int dateInteger);
     void operationsSort();
+    int choseDateAssignment();
+    double showIncomes(int lowerRange, int upperRange);
+    double showExpenses(int lowerRange, int upperRange);
 
 public:
-    BudgetTracker(string filename) : budgetTrackerFile(filename){
-        operations = budgetTrackerFile.readAllOperationsFromFile();
+    BudgetTracker(string filename, string outcomesFilename) : incomesFile(filename),expensesFile(outcomesFilename){
+        incomes = incomesFile.readAllOperationsFromFile();
+        expenses = expensesFile.readAllOperationsFromFile();
     }
     ~BudgetTracker(){}
 

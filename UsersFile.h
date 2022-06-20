@@ -4,16 +4,16 @@
 #include <iostream>
 #include <vector>
 
-#include "TextFile.h"
+#include "XmlFile.h"
 #include "User.h"
 #include "AuxiliaryMethods.h"
 
 using namespace std;
 
-class UsersFile:public TextFile{
+class UsersFile:public XmlFile{
 
 public:
-    UsersFile(string filename) : TextFile(filename){};
+    UsersFile(string filename) : XmlFile(filename){};
     vector <User> readAllUsersFromFile();
     void addUserToFile(User user);
     void editUserPassword(int loggedUserId, string newPassword);

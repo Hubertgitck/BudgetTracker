@@ -7,15 +7,16 @@
 
 using namespace std;
 
-class TextFile{
+class XmlFile{
 
 protected:
+    CMarkup xml;
     string getFilename();
     const string FILENAME;
-    CMarkup xml;
     bool checkIfFileEmpty();
+
 public:
-    TextFile(string filename) : FILENAME(filename){}
+    XmlFile(string filename) : FILENAME(filename){}
 };
 
 #endif

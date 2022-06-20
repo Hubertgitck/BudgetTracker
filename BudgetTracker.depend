@@ -13,7 +13,7 @@
 	<string>
 	<afx.h>
 
-1655741395 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\main.cpp
+1655749324 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\main.cpp
 	<iostream>
 	"BudgetingApp.h"
 	"BudgetTracker.h"
@@ -33,10 +33,10 @@
 	<iostream>
 	<sstream>
 
-1655741528 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettracker.cpp
+1655750236 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettracker.cpp
 	"BudgetTracker.h"
 
-1655739804 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettracker.h
+1655750033 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettracker.h
 	<iostream>
 	<ctime>
 	<string>
@@ -50,10 +50,10 @@
 1655478716 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettrackerfile.cpp
 	"BudgetTrackerFile.h"
 
-1655472902 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettrackerfile.h
+1655750645 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettrackerfile.h
 	<iostream>
 	<vector>
-	"TextFile.h"
+	"XmlFile.h"
 	"Operation.h"
 	"AuxiliaryMethods.h"
 
@@ -66,17 +66,17 @@
 1655403052 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\textfile.cpp
 	"TextFile.h"
 
-1655403052 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\textfile.h
+1655747566 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\textfile.h
 	<iostream>
 	"Markup.h"
 
 1655472065 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\usersfile.cpp
 	"UsersFile.h"
 
-1655402978 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\usersfile.h
+1655747640 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\usersfile.h
 	<iostream>
 	<vector>
-	"TextFile.h"
+	"XmlFile.h"
 	"User.h"
 	"AuxiliaryMethods.h"
 
@@ -95,4 +95,11 @@
 
 1655305523 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\user.h
 	<iostream>
+
+1655748293 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\xmlfile.h
+	<iostream>
+	"Markup.h"
+
+1655747715 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\xmlfile.cpp
+	"XmlFile.h"
 
