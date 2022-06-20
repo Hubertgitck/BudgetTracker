@@ -13,7 +13,7 @@
 	<string>
 	<afx.h>
 
-1655473008 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\main.cpp
+1655741395 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\main.cpp
 	<iostream>
 	"BudgetingApp.h"
 	"BudgetTracker.h"
@@ -26,27 +26,28 @@
 	"BudgetTracker.h"
 	"UsersMenager.h"
 
-1655473477 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\auxiliarymethods.cpp
+1655556124 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\auxiliarymethods.cpp
 	"AuxiliaryMethods.h"
 
-1655473489 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\auxiliarymethods.h
+1655474362 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\auxiliarymethods.h
 	<iostream>
 	<sstream>
 
-1655473478 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettracker.cpp
+1655741528 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettracker.cpp
 	"BudgetTracker.h"
 
-1655472986 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettracker.h
+1655739804 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettracker.h
 	<iostream>
 	<ctime>
 	<string>
 	<vector>
 	<iomanip>
+	<algorithm>
 	"AuxiliaryMethods.h"
 	"Operation.h"
 	"BudgetTrackerFile.h"
 
-1655473499 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettrackerfile.cpp
+1655478716 source:c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettrackerfile.cpp
 	"BudgetTrackerFile.h"
 
 1655472902 c:\users\hubert\desktop\kurs\przysz造programista-obiektowo\budgettracker\budgettrackerfile.h

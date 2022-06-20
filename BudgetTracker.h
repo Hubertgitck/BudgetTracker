@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include <iomanip>
+#include <algorithm>
 
 #include "AuxiliaryMethods.h"
 #include "Operation.h"
@@ -27,9 +28,12 @@ class BudgetTracker{
     int checkNumberOfDaysInMonth(int month,int year);
     int getNewOperationId();
     string formatDateToReadable(int dateInteger);
+    void operationsSort();
 
 public:
-    BudgetTracker(string filename) : budgetTrackerFile(filename){}
+    BudgetTracker(string filename) : budgetTrackerFile(filename){
+        operations = budgetTrackerFile.readAllOperationsFromFile();
+    }
     ~BudgetTracker(){}
 
     void addIncome();

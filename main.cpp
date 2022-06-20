@@ -40,8 +40,10 @@ int main(){
     //budgetTracker.getCurrentDate();
     //budgetTracker.insertDate();
 
-    budgetTracker.addIncome();
-    //budgetTracker.addExpense();
+    //budgetTracker.addIncome();budgetTracker.addIncome();
+    //budgetTracker.addExpense();budgetTracker.addExpense();
     budgetTracker.currentMonthBalance();
+    budgetTracker.lastMonthBalance();
+
 }
 

@@ -64,9 +64,14 @@ bg=BLUE</panel_attributes>
     </coordinates>
     <panel_attributes>BudgetTracker
 --
+- operations : vector &lt;Operation&gt;
 - LOGGED_USER_ID : Integer
-- getCurrentDate() : String
 - insertDate() : String
+- getCurrentDate() : Long Integer
+- getCurrentYear() : Integer
+- getCurrentMonth() : Integer
+- getCurrentDay() : Integer
+- checkDateIntegrity() : Bool
 --
 +BudgetTracker()
 + ~BudgetTracker()
@@ -156,23 +161,26 @@ bg=BLUE</panel_attributes>
       <x>1188</x>
       <y>972</y>
       <w>420</w>
-      <h>288</h>
+      <h>336</h>
     </coordinates>
     <panel_attributes>Operation
 --
 - operationId : Integer
 - userId : Integer
+- date : Integer
 - amount : double
-- operationDescription : String
+- description : String
 --
 + setOperationId() : void
 + setUserId() : void
++ setDate() : void
 + setAmount() : void
-+ setOperationDescription : void
++ setDescription : void
 + getOperationId() : Integer
 + getUserId() : Integer
++ getDate() : Integer
 + getAmount() : Double
-+ getOperationDescription : String
++ getDescription : String
 
 bg=GREEN</panel_attributes>
     <additional_attributes/>
@@ -245,12 +253,12 @@ bg=GREEN</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1356</x>
-      <y>1248</y>
+      <y>1296</y>
       <w>36</w>
-      <h>132</h>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>

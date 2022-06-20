@@ -16,6 +16,7 @@ public:
     static string convertCommaToDot(string stringWithComma);
     static double convertStringTodouble(string stringToConvert);
     static string formatDateToReadable(int dateInteger);
+    static int formatDateWithoutDashes(string dateWithDashes);
 };
 
 

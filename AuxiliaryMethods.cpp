@@ -61,3 +61,12 @@ string AuxiliaryMethods::formatDateToReadable(int dateInteger){
 
     return dateString;
 }
+
+int AuxiliaryMethods::formatDateWithoutDashes(string dateDashes){
+    string dateWithoutDashes = "";
+    for (string::iterator itr = dateDashes.begin(); itr != dateDashes.end(); itr++){
+        if (*itr != '-')
+            dateWithoutDashes += *itr;
+    }
+    return AuxiliaryMethods::convertStringToInt(dateWithoutDashes);
+}
