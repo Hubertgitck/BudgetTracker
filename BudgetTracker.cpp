@@ -4,12 +4,8 @@ void BudgetTracker::addIncome(){
     Operation operation;
     string amount="";
 
-    //get new income ID
-    if (incomes.empty())
-        operation.setOperationId(1);
-    else
-        operation.setOperationId(incomes.back().getOperationId() + 1);
-
+    operation.setOperationId(incomesFile.getLastOperationId() + 1);
+    operation.setUserId(LOGGED_USER_ID);
     operation.setDate(choseDateAssignment());
 
     cout << '\n' << "Czego dotyczy przychod? ";
@@ -28,12 +24,8 @@ void BudgetTracker::addExpense(){
     Operation operation;
     string amount="";
 
-    //get new expense ID
-    if (expenses.empty())
-        operation.setOperationId(1);
-    else
-        operation.setOperationId(expenses.back().getOperationId() + 1);
-
+    operation.setOperationId(expensesFile.getLastOperationId() + 1);
+    operation.setUserId(LOGGED_USER_ID);
     operation.setDate(choseDateAssignment());
 
     cout << '\n' << "Czego dotyczy wydatek? ";
@@ -68,6 +60,7 @@ void BudgetTracker::currentMonthBalance(){
     cout << '\n' << "Suma przychodow wynosi: " << incomes;
     cout << '\n' << "Suma wydatkow wynosi: " << expenses;
     cout << '\n' << "BILANS: " << balance << '\n';
+    system("pause");
 }
 
 void BudgetTracker::lastMonthBalance(){
@@ -95,6 +88,7 @@ void BudgetTracker::lastMonthBalance(){
     cout << '\n' << "Suma przychodow wynosi: " << incomes;
     cout << '\n' << "Suma wydatkow wynosi: " << expenses;
     cout << '\n' << "BILANS: " << balance << '\n';
+    system("pause");
 }
 
 void BudgetTracker::selectedPeriodBalance(){
@@ -121,6 +115,7 @@ void BudgetTracker::selectedPeriodBalance(){
     cout << '\n' << "Suma przychodow wynosi: " << incomes;
     cout << '\n' << "Suma wydatkow wynosi: " << expenses;
     cout << '\n' << "BILANS: " << balance << '\n';
+    system("pause");
 }
 
 int BudgetTracker::choseDateAssignment(){
@@ -275,14 +270,12 @@ int BudgetTracker::checkNumberOfDaysInMonth(int month, int year){
 }
 
 void BudgetTracker::operationsSort(){
-    sort( incomes.begin( ), incomes.end( ), [ ]( const auto&operation, const auto& nextOperation )
-    {
-        return operation.getDate() < nextOperation.getDate();
+    sort( incomes.begin( ), incomes.end( ), [ ]( const auto&operationA, const auto& operationB ){
+        return operationA.getDate() < operationB.getDate();
     });
 
-    sort( expenses.begin( ), expenses.end( ), [ ]( const auto&operation, const auto& nextOperation )
-    {
-        return operation.getDate() < nextOperation.getDate();
+    sort( expenses.begin( ), expenses.end( ), [ ]( const auto&operationA, const auto& operationB ){
+        return operationA.getDate() < operationB.getDate();
     });
 }
 

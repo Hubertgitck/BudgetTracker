@@ -23,23 +23,25 @@ class BudgetTracker{
     BudgetTrackerFile expensesFile;
 
     const int LOGGED_USER_ID;
-    bool checkDateIntegrity(int year, int month, int day);
     int getCurrentDate();
     int getCurrentYear();
     int getCurrentMonth();
     int getCurrentDay();
     int insertDate();
+    int choseDateAssignment();
     int checkNumberOfDaysInMonth(int month,int year);
     string formatDateToReadable(int dateInteger);
+    bool checkDateIntegrity(int year, int month, int day);
     void operationsSort();
-    int choseDateAssignment();
     double showIncomes(int lowerRange, int upperRange);
     double showExpenses(int lowerRange, int upperRange);
 
 public:
-    BudgetTracker(string filename, string outcomesFilename) : incomesFile(filename),expensesFile(outcomesFilename){
-        incomes = incomesFile.readAllOperationsFromFile();
-        expenses = expensesFile.readAllOperationsFromFile();
+    BudgetTracker(string incomesFilename, string expensesFilename, int loggedUserId) :
+        incomesFile(incomesFilename),expensesFile(expensesFilename), LOGGED_USER_ID(loggedUserId){
+
+        incomes = incomesFile.readAllOperationsFromFile(LOGGED_USER_ID);
+        expenses = expensesFile.readAllOperationsFromFile(LOGGED_USER_ID);
     }
     ~BudgetTracker(){}
 

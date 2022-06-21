@@ -23,7 +23,9 @@ public:
     UsersMenager(string filename) : usersFile(filename){
         users = usersFile.readAllUsersFromFile();
         loggedUserId = 0;
-    }
+    };
+    ~UsersMenager(){};
+
     int logIn();
     int getLoggedUserId();
     bool checkIfUserIsLoggedIn();

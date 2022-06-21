@@ -1,6 +1,6 @@
 #include "BudgetTrackerFile.h"
 
-vector <Operation> BudgetTrackerFile::readAllOperationsFromFile(){
+vector <Operation> BudgetTrackerFile::readAllOperationsFromFile(int loggedUserId){
 
     vector <Operation> operations;
     Operation operation;
@@ -10,21 +10,24 @@ vector <Operation> BudgetTrackerFile::readAllOperationsFromFile(){
         xml.IntoElem();
 
         while (xml.FindElem()){
-            operation.setOperationId(AuxiliaryMethods::convertStringToInt(xml.GetAttrib("ID")));
-
-            xml.IntoElem();
-            xml.FindElem();
-            operation.setUserId(AuxiliaryMethods::convertStringToInt(xml.GetData()));
-            xml.FindElem();
-            operation.setDate(AuxiliaryMethods::formatDateWithoutDashes(xml.GetData()));
-            xml.FindElem();
-            operation.setDescription(xml.GetData());
-            xml.FindElem();
-            operation.setAmount(AuxiliaryMethods::convertStringTodouble(xml.GetData()));
-
-            xml.OutOfElem();
-            operations.push_back(operation);
+            xml.FindChildElem("UserID");
+            if ((AuxiliaryMethods::convertStringToInt(xml.GetChildData()) == loggedUserId)){
+                operation.setOperationId(AuxiliaryMethods::convertStringToInt(xml.GetAttrib("ID")));
+                operation.setUserId(AuxiliaryMethods::convertStringToInt(xml.GetChildData()));
+                xml.IntoElem();
+                xml.FindElem("Date");
+                operation.setDate(AuxiliaryMethods::formatDateWithoutDashes(xml.GetData()));
+                xml.FindElem("Description");
+                operation.setDescription(xml.GetData());
+                xml.FindElem("Amount");
+                operation.setAmount(AuxiliaryMethods::convertStringTodouble(xml.GetData()));
+                operations.push_back(operation);
+                xml.OutOfElem();
+            }
         }
+    //xml.FindElem returns false if there is no next sibling element and leaves main position where it was so we can
+    //xml.GetAttrib of last operation outside of loop
+    lastOperationID = AuxiliaryMethods::convertStringToInt(xml.GetAttrib("ID"));
     return operations;
     }
 }
@@ -48,5 +51,9 @@ void BudgetTrackerFile::addNewOperationToFile(Operation operation){
     xml.AddElem("Amount", to_string(operation.getAmount()));
 
     xml.Save(getFilename());
+}
+
+int BudgetTrackerFile::getLastOperationId(){
+    return lastOperationID;
 }
 

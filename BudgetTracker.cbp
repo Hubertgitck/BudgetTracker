@@ -32,26 +32,26 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Application.cpp" />
+		<Unit filename="Application.h" />
 		<Unit filename="AuxiliaryMethods.cpp" />
 		<Unit filename="AuxiliaryMethods.h" />
 		<Unit filename="BudgetTracker.cpp" />
 		<Unit filename="BudgetTracker.h" />
 		<Unit filename="BudgetTrackerFile.cpp" />
 		<Unit filename="BudgetTrackerFile.h" />
-		<Unit filename="BudgetingApp.cpp" />
-		<Unit filename="BudgetingApp.h" />
 		<Unit filename="Markup.cpp" />
 		<Unit filename="Markup.h" />
 		<Unit filename="Operation.cpp" />
 		<Unit filename="Operation.h" />
-		<Unit filename="TextFile.cpp" />
-		<Unit filename="TextFile.h" />
 		<Unit filename="User.cpp" />
 		<Unit filename="User.h" />
 		<Unit filename="UsersFile.cpp" />
 		<Unit filename="UsersFile.h" />
 		<Unit filename="UsersMenager.cpp" />
 		<Unit filename="UsersMenager.h" />
+		<Unit filename="XmlFile.cpp" />
+		<Unit filename="XmlFile.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
