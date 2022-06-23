@@ -53,7 +53,6 @@ void BudgetTracker::currentMonthBalance(){
     currentMonthLowerRange = date.getCurrentDate() - date.getCurrentDay();
     currentMonthUpperRange = date.getCurrentDate();
 
-    cout << setprecision(15);
     cout << "<<<< BILANS OBECNEGO MIESIACA >>>>" << '\n';
 
     //executing sorting function
@@ -82,7 +81,6 @@ void BudgetTracker::lastMonthBalance(){
         lastMonthLowerRange = date.getCurrentDate() - date.getCurrentDay() - 8900;
     }
 
-    cout << setprecision(15);
     cout << "<<<< BILANS OSTATNIEGO MIESIACA >>>>" << '\n';
 
     //executing sorting function
@@ -111,7 +109,6 @@ void BudgetTracker::selectedPeriodBalance(){
 
     }while (!checkSelectedPeriodCorrectnes(selectedPeriodLowerRange, selectedPeriodUpperRange));
 
-    cout << setprecision(15);
     cout << "<<<< BILANS Z OKRESU OD " << AuxiliaryMethods::formatDateToReadable(selectedPeriodLowerRange) <<
     " DO " << AuxiliaryMethods::formatDateToReadable(selectedPeriodUpperRange) << " >>>>" << '\n';
 
@@ -165,11 +162,13 @@ void BudgetTracker::expensesSort(){
 double BudgetTracker::showIncomes(int lowerRange, int upperRange){
     double totalIncomes = 0;
 
+    cout << fixed << setprecision(2);
     cout << "PRZYCHODY: " << '\n';
 
     for (vector<Operation>::iterator itr = incomes.begin(); itr != incomes.end(); itr++){
         if (itr -> getDate() >= lowerRange && itr -> getDate() <= upperRange){
-                cout << "   " << AuxiliaryMethods::formatDateToReadable(itr -> getDate()) << " " << itr -> getDescription() << " " << itr -> getAmount() << '\n';
+                cout << setw(10) << AuxiliaryMethods::formatDateToReadable(itr -> getDate()) << "  "<<
+                setw(15) << left << itr -> getDescription() << setw(10) << right <<  itr -> getAmount() << '\n';
                 totalIncomes += itr -> getAmount();
         }
     }
@@ -179,11 +178,13 @@ return totalIncomes;
 double BudgetTracker::showExpenses(int lowerRange, int upperRange){
     double totalExpenses = 0;
 
+    cout << fixed << setprecision(2);
     cout << '\n' << "WYDATKI: " << '\n';
 
     for (vector<Operation>::iterator itr = expenses.begin(); itr != expenses.end(); itr++){
         if (itr -> getDate() >= lowerRange && itr -> getDate() <= upperRange){
-                cout << "   " << AuxiliaryMethods::formatDateToReadable(itr -> getDate()) << " " << itr -> getDescription() << " " << itr -> getAmount() << '\n';
+                cout << setw(10) << AuxiliaryMethods::formatDateToReadable(itr -> getDate()) << "  "<<
+                setw(15) << left << itr -> getDescription() << setw(10) << right <<  itr -> getAmount() << '\n';
                 totalExpenses += itr -> getAmount();
         }
     }

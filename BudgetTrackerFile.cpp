@@ -31,8 +31,6 @@ vector <Operation> BudgetTrackerFile::readAllOperationsFromFile(int loggedUserId
     //xml.GetChildData ID of last operation outside of loop
     xml.ResetChildPos();
     xml.FindChildElem("ID");
-    cout  << '\n'<< AuxiliaryMethods::convertStringToInt(xml.GetChildData())<< '\n';
-    system("pause");
     lastOperationID = AuxiliaryMethods::convertStringToInt(xml.GetChildData());
     return operations;
     }
