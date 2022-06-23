@@ -14,7 +14,7 @@ void BudgetTracker::addIncome(){
     cout << '\n' << "Podaj kwote przychodu: ";
     amount = AuxiliaryMethods::readLine();
     amount = AuxiliaryMethods::convertCommaToDot(amount);
-    operation.setAmount(AuxiliaryMethods::convertStringTodouble(amount));
+    operation.setAmount(AuxiliaryMethods::convertStringToDouble(amount));
 
     incomes.push_back(operation);
     incomesFile.addNewOperationToFile(operation);
@@ -38,7 +38,7 @@ void BudgetTracker::addExpense(){
     amount = AuxiliaryMethods::readLine();
     amount = AuxiliaryMethods::convertCommaToDot(amount);
 
-    operation.setAmount(AuxiliaryMethods::convertStringTodouble(amount)*(-1)); //*-1 because its an expense
+    operation.setAmount(AuxiliaryMethods::convertStringToDouble(amount)*(-1)); //*-1 because its an expense
     expenses.push_back(operation);
     expensesFile.addNewOperationToFile(operation);
 

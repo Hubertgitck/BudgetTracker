@@ -11,12 +11,16 @@ class AuxiliaryMethods{
 public:
     static string readLine();
     static string convertIntToString(int number);
+    static string convertCommaToDot(string stringWithComma);
+    static string formatDateToReadable(int dateInteger);
+    static string convertDoubleToString(double nubmerAsDouble);
     static char readChar();
     static int convertStringToInt(string number);
-    static string convertCommaToDot(string stringWithComma);
-    static double convertStringTodouble(string stringToConvert);
-    static string formatDateToReadable(int dateInteger);
     static int formatDateWithoutDashes(string dateWithDashes);
+    static double convertStringToDouble(string stringToConvert);
+
+
+
 };
 
 

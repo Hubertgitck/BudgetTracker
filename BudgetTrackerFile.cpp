@@ -21,7 +21,7 @@ vector <Operation> BudgetTrackerFile::readAllOperationsFromFile(int loggedUserId
                 xml.FindElem("Description");
                 operation.setDescription(xml.GetData());
                 xml.FindElem("Amount");
-                operation.setAmount(AuxiliaryMethods::convertStringTodouble(xml.GetData()));
+                operation.setAmount(AuxiliaryMethods::convertStringToDouble(xml.GetData()));
                 xml.OutOfElem();
 
                 operations.push_back(operation);
@@ -52,7 +52,7 @@ void BudgetTrackerFile::addNewOperationToFile(Operation operation){
     xml.AddElem("UserID", operation.getUserId());
     xml.AddElem("Date", AuxiliaryMethods::formatDateToReadable(operation.getDate()));
     xml.AddElem("Description", operation.getDescription());
-    xml.AddElem("Amount", to_string(operation.getAmount()));
+    xml.AddElem("Amount", AuxiliaryMethods::convertDoubleToString(operation.getAmount()));
 
     xml.Save(getFilename());
     lastOperationID++ ;

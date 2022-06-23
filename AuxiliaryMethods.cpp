@@ -48,7 +48,7 @@ string AuxiliaryMethods::convertCommaToDot(string stringWithComma){
     return stringWithDot;
 }
 
-double AuxiliaryMethods::convertStringTodouble(string stringToConvert){
+double AuxiliaryMethods::convertStringToDouble(string stringToConvert){
     return stod(stringToConvert);
 }
 
@@ -69,4 +69,10 @@ int AuxiliaryMethods::formatDateWithoutDashes(string dateDashes){
             dateWithoutDashes += *itr;
     }
     return AuxiliaryMethods::convertStringToInt(dateWithoutDashes);
+}
+
+string AuxiliaryMethods::convertDoubleToString(double nubmerAsDouble){
+    ostringstream os;
+    os << nubmerAsDouble;
+    return os.str();
 }

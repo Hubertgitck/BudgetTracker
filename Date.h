@@ -9,6 +9,7 @@
 using namespace std;
 
 class Date{
+
 public:
     int getCurrentDate();
     int getCurrentYear();

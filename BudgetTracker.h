@@ -24,12 +24,13 @@ class BudgetTracker{
     Date date;
 
     const int LOGGED_USER_ID;
+
     int choseDateAssignment();
+    double showIncomes(int lowerRange, int upperRange);
+    double showExpenses(int lowerRange, int upperRange);
     string formatDateToReadable(int dateInteger);
     void incomesSort();
     void expensesSort();
-    double showIncomes(int lowerRange, int upperRange);
-    double showExpenses(int lowerRange, int upperRange);
     bool checkSelectedPeriodCorrectnes(int selectedPeriodLowerRange, int selectedPeriodUpperRange);
 
 public:

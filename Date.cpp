@@ -59,7 +59,7 @@ int Date::insertDate(){
         dateIntegrityFlag = checkDateIntegrity(AuxiliaryMethods::convertStringToInt(year), AuxiliaryMethods::convertStringToInt(month),
             AuxiliaryMethods::convertStringToInt(day));
             if (!dateIntegrityFlag){
-                cout << "Wprowadzona bledna date operacji! Wpisz date w formacie yyyy-mm-dd" << '\n';
+                cout << "Wpisz date w formacie yyyy-mm-dd w zakresie od 2000-01-01 do ostatniego dnia aktualnego miesiaca!" << '\n';
             }
     }while (!dateIntegrityFlag);
 
@@ -75,10 +75,10 @@ bool Date::checkDateIntegrity(int year, int month, int day){
     if (year < yearLowerRange || year > yearUpperRange)
         return false;
 
-    if (month < 1 || month > 12 || (year == getCurrentYear() && month > getCurrentMonth()) )
+    if (month < 1 || month > 12 || (year == getCurrentYear() && month > getCurrentMonth()))
         return false;
 
-    if (day < 1 || day > checkNumberOfDaysInMonth(month, year))
+    if (day < 1 || day > checkNumberOfDaysInMonth(month, year) || (year == getCurrentYear() && day > getCurrentDay()))
         return false;
 
     return true;
