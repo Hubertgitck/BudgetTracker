@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Operations>
+<operation ID="1">
+<UserID>1</UserID>
+<Date>2022-06-21</Date>
+<Description>hubert</Description>
+<Amount>-123.000000</Amount>
+</operation>
+<operation ID="2">
+<UserID>1</UserID>
+<Date>2022-06-21</Date>
+<Description>hubert</Description>
+<Amount>-350.000000</Amount>
+</operation>
+<operation ID="3">
+<UserID>2</UserID>
+<Date>2022-06-21</Date>
+<Description>marcin</Description>
+<Amount>-350.000000</Amount>
+</operation>
+<operation ID="4">
+<UserID>2</UserID>
+<Date>2022-06-21</Date>
+<Description>agata</Description>
+<Amount>-100.000000</Amount>
+</operation>
+<operation ID="4">
+<UserID>5</UserID>
+<Date>2022-06-21</Date>
+<Description>kupa</Description>
+<Amount>-250.000000</Amount>
+</operation>
+</Operations>
