@@ -6,6 +6,7 @@ void Application::userRegistration(){
 
 void Application::logOut(){
     usersMenager.logOut();
+
     delete budgetTracker;
     budgetTracker = NULL;
 }

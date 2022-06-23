@@ -12,22 +12,28 @@ vector <Operation> BudgetTrackerFile::readAllOperationsFromFile(int loggedUserId
         while (xml.FindElem()){
             xml.FindChildElem("UserID");
             if ((AuxiliaryMethods::convertStringToInt(xml.GetChildData()) == loggedUserId)){
-                operation.setOperationId(AuxiliaryMethods::convertStringToInt(xml.GetAttrib("ID")));
                 operation.setUserId(AuxiliaryMethods::convertStringToInt(xml.GetChildData()));
                 xml.IntoElem();
+                xml.FindElem("ID");
+                operation.setOperationId(AuxiliaryMethods::convertStringToInt(xml.GetData()));
                 xml.FindElem("Date");
                 operation.setDate(AuxiliaryMethods::formatDateWithoutDashes(xml.GetData()));
                 xml.FindElem("Description");
                 operation.setDescription(xml.GetData());
                 xml.FindElem("Amount");
                 operation.setAmount(AuxiliaryMethods::convertStringTodouble(xml.GetData()));
-                operations.push_back(operation);
                 xml.OutOfElem();
+
+                operations.push_back(operation);
             }
         }
     //xml.FindElem returns false if there is no next sibling element and leaves main position where it was so we can
-    //xml.GetAttrib of last operation outside of loop
-    lastOperationID = AuxiliaryMethods::convertStringToInt(xml.GetAttrib("ID"));
+    //xml.GetChildData ID of last operation outside of loop
+    xml.ResetChildPos();
+    xml.FindChildElem("ID");
+    cout  << '\n'<< AuxiliaryMethods::convertStringToInt(xml.GetChildData())<< '\n';
+    system("pause");
+    lastOperationID = AuxiliaryMethods::convertStringToInt(xml.GetChildData());
     return operations;
     }
 }
@@ -43,14 +49,15 @@ void BudgetTrackerFile::addNewOperationToFile(Operation operation){
     xml.FindElem();
     xml.IntoElem();
     xml.AddElem("operation");
-    xml.SetAttrib("ID", operation.getOperationId());
     xml.IntoElem();
+    xml.AddElem("ID", operation.getOperationId());
     xml.AddElem("UserID", operation.getUserId());
     xml.AddElem("Date", AuxiliaryMethods::formatDateToReadable(operation.getDate()));
     xml.AddElem("Description", operation.getDescription());
     xml.AddElem("Amount", to_string(operation.getAmount()));
 
     xml.Save(getFilename());
+    lastOperationID++ ;
 }
 
 int BudgetTrackerFile::getLastOperationId(){
