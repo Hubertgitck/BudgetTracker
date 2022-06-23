@@ -51,7 +51,8 @@ void BudgetTracker::currentMonthBalance(){
     cout << "<<<< BILANS OBECNEGO MIESIACA >>>>" << '\n';
 
     //executing sorting function
-    operationsSort();
+    incomesSort();
+    expensesSort();
 
     incomes = showIncomes(currentMonthLowerRange, currentMonthUpperRange);
     expenses = showExpenses(currentMonthLowerRange, currentMonthUpperRange);
@@ -79,7 +80,8 @@ void BudgetTracker::lastMonthBalance(){
     cout << "<<<< BILANS OSTATNIEGO MIESIACA >>>>" << '\n';
 
     //executing sorting function
-    operationsSort();
+    incomesSort();
+    expensesSort();
 
     incomes = showIncomes(lastMonthLowerRange, lastMonthUpperRange);
     expenses = showExpenses(lastMonthLowerRange, lastMonthUpperRange);
@@ -106,7 +108,8 @@ void BudgetTracker::selectedPeriodBalance(){
     " DO " << AuxiliaryMethods::formatDateToReadable(selectedPeriodUpperRange) << " >>>>" << '\n';
 
     //executing sorting function
-    operationsSort();
+    incomesSort();
+    expensesSort();
 
     incomes = showIncomes(selectedPeriodLowerRange, selectedPeriodUpperRange);
     expenses = showExpenses(selectedPeriodLowerRange, selectedPeriodUpperRange);
@@ -269,12 +272,13 @@ int BudgetTracker::checkNumberOfDaysInMonth(int month, int year){
 		return 30;
 }
 
-void BudgetTracker::operationsSort(){
-    sort( incomes.begin( ), incomes.end( ), [ ]( const auto&operationA, const auto& operationB ){
+void BudgetTracker::incomesSort(){
+    sort( incomes.begin( ), incomes.end( ), []( Operation &operationA, Operation &operationB ){
         return operationA.getDate() < operationB.getDate();
     });
-
-    sort( expenses.begin( ), expenses.end( ), [ ]( const auto&operationA, const auto& operationB ){
+}
+void BudgetTracker::expensesSort(){
+    sort( expenses.begin( ), expenses.end( ), []( Operation &operationA, Operation &operationB ){
         return operationA.getDate() < operationB.getDate();
     });
 }

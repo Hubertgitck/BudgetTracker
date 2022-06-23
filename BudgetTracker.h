@@ -32,7 +32,8 @@ class BudgetTracker{
     int checkNumberOfDaysInMonth(int month,int year);
     string formatDateToReadable(int dateInteger);
     bool checkDateIntegrity(int year, int month, int day);
-    void operationsSort();
+    void incomesSort();
+    void expensesSort();
     double showIncomes(int lowerRange, int upperRange);
     double showExpenses(int lowerRange, int upperRange);
 
