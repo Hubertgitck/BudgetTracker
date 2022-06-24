@@ -11,8 +11,9 @@ class XmlFile{
 
 protected:
     CMarkup xml;
-    string getFilename();
     const string FILENAME;
+
+    string getFilename();
     bool checkIfFileEmpty();
 
 public:

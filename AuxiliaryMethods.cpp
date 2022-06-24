@@ -71,8 +71,8 @@ int AuxiliaryMethods::formatDateWithoutDashes(string dateDashes){
     return AuxiliaryMethods::convertStringToInt(dateWithoutDashes);
 }
 
-string AuxiliaryMethods::convertDoubleToString(double nubmerAsDouble){
+string AuxiliaryMethods::convertDoubleToString(double numberAsDouble){
     ostringstream os;
-    os << nubmerAsDouble;
+    os << numberAsDouble;
     return os.str();
 }

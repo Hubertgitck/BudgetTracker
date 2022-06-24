@@ -9,6 +9,7 @@
 #include "AuxiliaryMethods.h"
 
 using namespace std;
+
 class BudgetTrackerFile:public XmlFile{
     int lastOperationID;
 

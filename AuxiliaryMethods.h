@@ -19,8 +19,6 @@ public:
     static int formatDateWithoutDashes(string dateWithDashes);
     static double convertStringToDouble(string stringToConvert);
 
-
-
 };
 
 

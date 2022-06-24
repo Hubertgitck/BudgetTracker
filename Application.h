@@ -14,6 +14,7 @@ class Application{
     BudgetTracker *budgetTracker;
     const string INCOMES_FILENAME;
     const string EXPENSES_FILENAME;
+
 public:
     Application(string usersFilename, string incomesFilename, string expensesFilename ) :
         usersMenager(usersFilename),INCOMES_FILENAME(incomesFilename),EXPENSES_FILENAME(expensesFilename) {
