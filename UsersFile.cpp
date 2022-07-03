@@ -10,9 +10,10 @@ vector <User> UsersFile::readAllUsersFromFile(){
         xml.IntoElem();
 
         while (xml.FindElem()){
-            user.setId(AuxiliaryMethods::convertStringToInt(xml.GetAttrib("ID")));
 
             xml.IntoElem();
+            xml.FindElem();
+            user.setId(AuxiliaryMethods::convertStringToInt(xml.GetData()));
             xml.FindElem();
             user.setName(xml.GetData());
             xml.FindElem();
@@ -40,8 +41,8 @@ void UsersFile::addUserToFile(User user){
     xml.FindElem();
     xml.IntoElem();
     xml.AddElem("User");
-    xml.SetAttrib("ID", user.getId());
     xml.IntoElem();
+    xml.AddElem("ID", user.getId());
     xml.AddElem("Name", user.getName());
     xml.AddElem("LastName", user.getLastName());
     xml.AddElem("Login", user.getLogin());
@@ -52,13 +53,14 @@ void UsersFile::addUserToFile(User user){
 
 void UsersFile::editUserPassword(int loggedUserId, string newPassword){
 
-    string loggedUserIdString = AuxiliaryMethods::convertIntToString(loggedUserId);
     xml.Load(getFilename());
     xml.FindElem();
     xml.IntoElem();
 
     while (xml.FindElem()){
-        if (xml.GetAttrib("ID")==loggedUserIdString){
+        xml.FindChildElem("ID");
+        if (AuxiliaryMethods::convertStringToInt(xml.GetChildData()) == loggedUserId){
+
             xml.IntoElem();
             xml.FindElem("Password");
             xml.SetData(newPassword);

@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <ctime>
+#include <string>
 
 #include "AuxiliaryMethods.h"
 
@@ -18,7 +19,7 @@ public:
     int insertDate();
     int checkNumberOfDaysInMonth(int month,int year);
 
-    bool checkDateIntegrity(int year, int month, int day);
+    bool checkDateIntegrity(int year, int month, int day, string insertedDate);
 
 };
 

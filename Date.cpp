@@ -57,7 +57,7 @@ int Date::insertDate(){
 
         insertedDateWithoutDashes = year+month+day;
         dateIntegrityFlag = checkDateIntegrity(AuxiliaryMethods::convertStringToInt(year), AuxiliaryMethods::convertStringToInt(month),
-            AuxiliaryMethods::convertStringToInt(day));
+            AuxiliaryMethods::convertStringToInt(day), insertedDate);
             if (!dateIntegrityFlag){
                 cout << "Wpisz date w formacie yyyy-mm-dd w zakresie od 2000-01-01 do ostatniego dnia aktualnego miesiaca!" << '\n';
             }
@@ -67,10 +67,13 @@ int Date::insertDate(){
     return insertedDateAsInteger;
 }
 
-bool Date::checkDateIntegrity(int year, int month, int day){
+bool Date::checkDateIntegrity(int year, int month, int day, string insertedDate){
     // Date lower range is 2000-01-01 ; upper range is last day of current month
     int yearLowerRange = 2000;
     int yearUpperRange = getCurrentYear();
+
+    if (insertedDate.length() != 10)
+        return false;
 
     if (year < yearLowerRange || year > yearUpperRange)
         return false;
@@ -78,7 +81,7 @@ bool Date::checkDateIntegrity(int year, int month, int day){
     if (month < 1 || month > 12 || (year == getCurrentYear() && month > getCurrentMonth()))
         return false;
 
-    if (day < 1 || day > checkNumberOfDaysInMonth(month, year) || (year == getCurrentYear() && day > getCurrentDay()))
+    if (day < 1 || day > checkNumberOfDaysInMonth(month, year) || (year == getCurrentYear() && month == getCurrentMonth() && day > getCurrentDay()))
         return false;
 
     return true;

@@ -19,6 +19,4 @@ public:
     void editUserPassword(int loggedUserId, string newPassword);
 };
 
-
-
 #endif
